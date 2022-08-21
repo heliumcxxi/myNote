@@ -11,3 +11,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+:root {
+  --font-base: 'La Belle Aurore', cursive;
+  --font-second: sans-serif;
+  --font-third: Coolvetica;
+  --primary-color: #000000;
+  --secondary-color: #00ffd5;
+  --black-color: #000;
+  --lightGray-color: #e4e4e4;
+  --gray-color: #4d4d4e;
+  --brown-color: #46364a;
+  --white-color: #fff;
+}

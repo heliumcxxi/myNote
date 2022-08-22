@@ -1,4 +1,37 @@
 import styled from "styled-components";
+import { useContext } from "react";
+import { TodoContext } from "../contexts/TodoContext";
+
+const AddTask = ({ handleAddTask, removeCompleted, taskTitleRef }) => {
+  const { setNewTodo, setTodos, newTodo } = useContext(TodoContext);
+
+  return (
+    <Container>
+      <Input
+        onChange={(event) =>
+          setNewTodo((prevValue) => ({
+            ...prevValue,
+            title: event.target.value,
+          }))
+        }
+        ref={taskTitleRef}
+        type="text"
+        placeholder="Add Task here"
+      />
+      <ButtonContainer>
+        <Button
+          onClick={() => {
+            setTodos((prevValue) => [newTodo, ...prevValue]);
+            setNewTodo({});
+          }}
+        >
+          Add Task
+        </Button>
+        <Button onClick={removeCompleted}>Remove Completed</Button>
+      </ButtonContainer>
+    </Container>
+  );
+};
 
 const Container = styled.div`
   display: flex;
@@ -47,17 +80,5 @@ const Button = styled.button`
     color: var(--white-color);
   }
 `;
-
-const AddTask = ({ handleAddTask, removeCompleted, taskTitleRef }) => {
-  return (
-    <Container>
-      <Input ref={taskTitleRef} type="text" placeholder="Add Task here" />
-      <ButtonContainer>
-        <Button onClick={handleAddTask}>Add Task</Button>
-        <Button onClick={removeCompleted}>Remove Completed</Button>
-      </ButtonContainer>
-    </Container>
-  );
-};
 
 export default AddTask;

@@ -1,5 +1,7 @@
 import Task from "./Task";
 import styled from "styled-components";
+import { useContext } from "react";
+import { TodoContext } from "../contexts/TodoContext";
 
 const Container = styled.div`
   display: flex;
@@ -14,11 +16,12 @@ const Container = styled.div`
   border-radius: 5px;
 `;
 
-export default function Display({ tasks, toggleTask }) {
+export default function Display({ toggleTask }) {
+  const { todos } = useContext(TodoContext);
   return (
     <Container>
-      {tasks.map((task) => (
-        <Task key={task.id} task={task} toggleTask={toggleTask} />
+      {todos.map((task) => (
+        <Task key={task.date} title={task.title} toggleTask={toggleTask} />
       ))}
     </Container>
   );

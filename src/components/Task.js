@@ -7,20 +7,20 @@ const Container = styled.div`
 const Label = styled.label``;
 const Input = styled.input``;
 
-export default function Task({ task, toggleTask }) {
-  function handleTaskClick() {
-    toggleTask(task.id);
-  }
+export default function Task({ title, toggleTask }) {
+  // function handleTaskClick() {
+  //   toggleTask(task.id);
+  // }
 
   return (
     <Container>
       <Label>
         <Input
           type="checkbox"
-          checked={task.complete}
-          onChange={handleTaskClick}
+          // checked={task.complete}
+          // onChange={handleTaskClick}
         />
-        {task.taskTitle}
+        {title}
       </Label>
     </Container>
   );

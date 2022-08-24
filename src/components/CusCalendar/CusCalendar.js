@@ -4,13 +4,6 @@ import Calendar from "react-calendar";
 import "./Calendar.css";
 import { TodoContext } from "../../contexts/TodoContext";
 
-const Container = styled.div`
-  width: 300px;
-  padding: 2rem;
-  margin: auto;
-  height: 300px;
-`;
-
 const CusCalendar = () => {
   const { setNewTodo } = useContext(TodoContext);
 
@@ -26,3 +19,10 @@ const CusCalendar = () => {
 };
 
 export default CusCalendar;
+
+const Container = styled.div`
+  width: 300px;
+  padding: 2rem;
+  margin: auto;
+  height: 300px;
+`;

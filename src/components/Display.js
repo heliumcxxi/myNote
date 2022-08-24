@@ -3,6 +3,24 @@ import styled from "styled-components";
 import { useContext } from "react";
 import { TodoContext } from "../contexts/TodoContext";
 
+export default function Display({}) {
+  const { todos } = useContext(TodoContext);
+
+  return (
+    <Container>
+      {todos.map((todo) => (
+        <Task
+          key={todo.id}
+          id={todo.id}
+          title={todo.title}
+          date={todo.date}
+          completed={todo.completed}
+        />
+      ))}
+    </Container>
+  );
+}
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -15,14 +33,3 @@ const Container = styled.div`
   border: 1px solid;
   border-radius: 5px;
 `;
-
-export default function Display({ toggleTask }) {
-  const { todos } = useContext(TodoContext);
-  return (
-    <Container>
-      {todos.map((task) => (
-        <Task key={task.date} title={task.title} toggleTask={toggleTask} />
-      ))}
-    </Container>
-  );
-}

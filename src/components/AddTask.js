@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import { useContext } from "react";
 import { TodoContext } from "../contexts/TodoContext";
+import { v4 as uuidv4 } from "uuid";
 
-const AddTask = ({ handleAddTask, removeCompleted, taskTitleRef }) => {
-  const { setNewTodo, setTodos, newTodo } = useContext(TodoContext);
+const AddTask = ({ titleRef }) => {
+  const { setNewTodo, setTodos, newTodo, todos } = useContext(TodoContext);
 
   return (
     <Container>
@@ -14,20 +15,31 @@ const AddTask = ({ handleAddTask, removeCompleted, taskTitleRef }) => {
             title: event.target.value,
           }))
         }
-        ref={taskTitleRef}
+        ref={titleRef}
         type="text"
         placeholder="Add Task here"
       />
       <ButtonContainer>
         <Button
           onClick={() => {
+            const title = titleRef.current.value;
+            if (title === "") return;
             setTodos((prevValue) => [newTodo, ...prevValue]);
-            setNewTodo({});
+            setNewTodo({ id: uuidv4(), date: "", title: "", completed: false });
+            titleRef.current.value = null;
+            console.log(newTodo);
           }}
+          disabled={!newTodo.date.length}
         >
           Add Task
         </Button>
-        <Button onClick={removeCompleted}>Remove Completed</Button>
+        <Button
+          onClick={() => {
+            setTodos(todos.filter((todo) => !todo.completed));
+          }}
+        >
+          Remove Completed
+        </Button>
       </ButtonContainer>
     </Container>
   );

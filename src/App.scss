@@ -1,0 +1,16 @@
+@use './styles/breakpoints' as bkp;
+
+.app{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(13deg, rgba(251, 226, 239, 0.3), rgba(226, 251, 250, 0.3));
+
+  @include bkp.min-width-md {
+    flex-direction: row;
+  }
+}
+

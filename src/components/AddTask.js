@@ -53,6 +53,10 @@ const Container = styled.div`
   max-height: 300px;
   height: 100%;
   margin: 2rem;
+
+  @media (max-width: 768px) {
+    max-height: 150px;
+  }
 `;
 
 const Input = styled.input`

@@ -23,8 +23,8 @@ export default function Task({ title, completed, id, date }) {
   );
 }
 
-const Container = styled.div`
-  margin: 0.5rem;
-`;
+const Container = styled.div``;
 const Label = styled.label``;
-const Input = styled.input``;
+const Input = styled.input`
+  margin: 0;
+`;

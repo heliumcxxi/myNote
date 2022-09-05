@@ -1,28 +1,20 @@
 import { useContext } from "react";
-import styled from "styled-components";
 import Calendar from "react-calendar";
-import "./Calendar.css";
+import "./Calendar.scss";
 import { TodoContext } from "../../contexts/TodoContext";
 
 const CusCalendar = () => {
   const { setNewTodo } = useContext(TodoContext);
 
   return (
-    <Container>
+    <div className="container">
       <Calendar
         onChange={(value) => {
           setNewTodo((x) => ({ ...x, date: JSON.stringify(value) }));
         }}
       />
-    </Container>
+    </div>
   );
 };
 
 export default CusCalendar;
-
-const Container = styled.div`
-  width: 300px;
-  padding: 2rem;
-  margin: auto;
-  height: 300px;
-`;

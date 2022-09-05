@@ -1,4 +1,4 @@
-import "./App.css";
+import "./App.scss";
 import AddTask from "./components/AddTask";
 import Display from "./components/Display";
 import { useRef, useState, useEffect, useContext } from "react";
@@ -21,40 +21,16 @@ function App() {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos));
   }, [todos]);
 
-  // function toggleTask(id) {
-  //   const newTodos = [...todos];
-  //   const todo = newTodos.find((task) => task.id === id);
-  //   todo.complete = !to.complete;
-  //   setTodos(newTasks);
-  // }
-
-  // function handleAddTask(e) {
-  //   const taskTitle = taskTitleRef.current.value;
-  //   if (taskTitle === "") return;
-  //   setTodos((prevTasks) => {
-  //     return [
-  //       ...prevTasks,
-  //       {
-  //         id: prevTasks + 1,
-  //         taskTitle: taskTitle,
-  //         complete: false,
-  //       },
-  //     ];
-  //   });
-  //   taskTitleRef.current.value = null;
-  // }
-
-  // function removeCompleted() {
-  //   const newTasks = tasks.filter((task) => !task.complete);
-  //   setTodos(newTasks);
-  // }
-
   return (
-    <>
-      <CusCalendar />
-      <Display />
-      <AddTask titleRef={titleRef} />
-    </>
+    <div className="app">
+      <div className="calendarContainer">
+        <CusCalendar />
+      </div>
+      <div className="taskContainer">
+        <Display />
+        <AddTask titleRef={titleRef} />
+      </div>
+    </div>
   );
 }
 
